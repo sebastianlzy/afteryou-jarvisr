@@ -21,37 +21,52 @@
     var service_reports = [
 
 
-// {
-//     "id": 133,
-//     "number_of_submission": 0,
-//     "latest": false,
-//     "address": {
-//         "name": "Parc Oasis",
-//         "block_number": "142",
-//         "street_name": "Bukit Batok",
-//         "unit_number": "12-03",
-//         "postal_code": 650142
-//     },
-//     "request_submitted_date": "15/10/2014",
-//     "sent_to_agent": false,
-//     "new_admin_message": false
-// },
+        {
+            "id": 133,
+            "number_of_submission": 0,
+            "latest": false,
+            "address": {
+                "name": "Parc Oasis",
+                "block_number": "142",
+                "street_name": "Bukit Batok",
+                "unit_number": "12-03",
+                "postal_code": 650142
+            },
+            "request_submitted_date": "15/10/2014",
+            "sent_to_agent": false,
+            "new_admin_message": false
+        },
 
-// {
-//     "id": 132,
-//     "number_of_submission": 0,
-//     "latest": false,
-//     "address": {
-//         "name": "Parc Oasis",
-//         "block_number": "142",
-//         "street_name": "Jurong West Central 1",
-//         "unit_number": "12-345",
-//         "postal_code": 650142
-//     },
-//     "request_submitted_date": "15/10/2014",
-//     "sent_to_agent": true,
-//     "new_admin_message": true
-// }
+        {
+            "id": 132,
+            "number_of_submission": 0,
+            "latest": false,
+            "address": {
+                "name": "Parc Oasis",
+                "block_number": "142",
+                "street_name": "Jurong West Central 1",
+                "unit_number": "12-345",
+                "postal_code": 650142
+            },
+            "request_submitted_date": "15/10/2014",
+            "sent_to_agent": true,
+            "new_admin_message": true
+        },
+        {
+            "id": 131,
+            "number_of_submission": 0,
+            "latest": false,
+            "address": {
+                "name": "Parc Oasis",
+                "block_number": "142",
+                "street_name": "Jurong West Central 1",
+                "unit_number": "12-345",
+                "postal_code": 650142
+            },
+            "request_submitted_date": "15/10/2014",
+            "sent_to_agent": true,
+            "new_admin_message": true
+        }
 
     ];
 
@@ -2073,7 +2088,14 @@
         var listings = {
             results: [
 
-                {
+                {   "room_count": 
+                        [{"position": 1, "type": "Bedroom", "id": 6, "default_number": 2 },
+                        {"position": 2,"type": "Bathroom","id": 8,"default_number": 2},
+                        {"position": 3,"type": "Living Room","id": 5,"default_number": 1},
+                        {"position": 4,"type": "Kitchen","id": 7,"default_number": 1},
+                        {"position": 5,"type": "Store Room","id": 10,"default_number": 1},
+                        {"position": 6,"type": "Balcony/Patio","id": 9,"default_number": 0},
+                        {"position": 7,"type": "Others","id": 11,"default_number": 0}],
                     "number_of_bedroom": 3,
                     "number_of_bathroom": 2,
                     "name": "Parc Oasis",
@@ -2081,9 +2103,18 @@
                     "street_name": "Bukit Batok",
                     "unit_number": "12-03",
                     "square_feet": 1234,
+                    "postal_code" : 650123,
                     "id": 292
                 },
                 {
+                    "room_count": 
+                        [{"position": 1, "type": "Bedroom", "id": 6, "default_number": 2 },
+                        {"position": 2,"type": "Bathroom","id": 8,"default_number": 2},
+                        {"position": 3,"type": "Living Room","id": 5,"default_number": 1},
+                        {"position": 4,"type": "Kitchen","id": 7,"default_number": 1},
+                        {"position": 5,"type": "Store Room","id": 10,"default_number": 1},
+                        {"position": 6,"type": "Balcony/Patio","id": 9,"default_number": 0},
+                        {"position": 7,"type": "Others","id": 11,"default_number": 0}],
                     "number_of_bedroom": 3,
                     "number_of_bathroom": 2,
                     "name": "Sentinal",
@@ -2091,6 +2122,7 @@
                     "street_name": "Jurong West",
                     "unit_number": "12-345",
                     "square_feet": 1111,
+                    "postal_code" : 123444,
                     "id": 292
                 }
 
