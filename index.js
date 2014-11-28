@@ -3,15 +3,17 @@
 
 (function () {
   'use strict';
-  var Hapi, Good, gulp, _request, _, prettyjson, server, service_reports, service_report_134, listings;
+  var Hapi, Good, gulp, _request, _, prettyjson, server, service_reports, service_report_134,
+    _listings, _rooms;
   Hapi = require('hapi');
   Good = require('good');
   gulp = require('gulp');
-  _request = require('request');
   _ = require('lodash');
   prettyjson = require('prettyjson');
-  listings = require('./listings.js');
+  _request = require('request');
 
+  _listings = require('./listings.js');
+  _rooms = require('./rooms.js');
 
   server = Hapi.createServer('0.0.0.0', 3000, {json: { space: 2 }, cors: true, router: { stripTrailingSlash: true }});
 
@@ -393,44 +395,7 @@
 
 //JARVIS
   var rooms = function (id) {
-    var rooms = [
-      {
-        "id": 6,
-        "type": "Bedroom",
-        "default_number": 2,
-        "position": 1
-      },
-      {
-        "id": 8,
-        "type": "Bathroom",
-        "default_number": 2,
-        "position": 2
-      },
-      {
-        "id": 5,
-        "type": "Living Room",
-        "default_number": 1,
-        "position": 3
-      },
-      {
-        "id": 7,
-        "type": "Kitchen",
-        "default_number": 1,
-        "position": 4
-      },
-      {
-        "id": 10,
-        "type": "Store Room",
-        "default_number": 1,
-        "position": 5
-      },
-      {
-        "id": 9,
-        "type": "Balcony/Patio",
-        "default_number": 0,
-        "position": 6
-      }
-    ]
+    var rooms = _rooms.getAll();
 
 
     if (isNaN(id)) {
@@ -2077,7 +2042,7 @@
 
   var listing = function (id) {
 
-    return listings.getAll();
+    return _listings.getAll();
 
   }
 
