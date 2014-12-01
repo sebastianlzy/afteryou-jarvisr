@@ -192,7 +192,7 @@ var serviceReport289 = {
       "selected": false,
       "selected_datetime": null,
       "quantity": 1,
-      "material": "Nylon",
+      "material": "Nylon Carpet",
       "dimension_x": null,
       "dimension_y": null,
       "dimension_unit": "feet"
@@ -207,7 +207,7 @@ var serviceReport289 = {
       "selected": false,
       "selected_datetime": null,
       "quantity": 1,
-      "material": "Nylon",
+      "material": "Nylon Carpet",
       "dimension_x": null,
       "dimension_y": null,
       "dimension_unit": "feet"
