@@ -5,10 +5,10 @@
   'use strict';
   var Hapi, Good, _request, _, prettyjson, server, fs,
     getPath, postPath, putPath,
-    rooms, roomWithAreas, areas, areaWithIssues, listing, serviceReports,
-    _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports,
+    rooms, roomWithAreas, areas, areaWithIssues, listing, serviceReports, messages,
+    _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports, _messages,
     postLogin, postListing, postRequest, putServiceReport, postNotificationToken, postFeedback, postChangePassword, postSRmail, postMessageServiceReport,
-    getFromOneMap, getStreetName, token, renewToken = false;
+    getFromOneMap, getStreetName, token, renewToken = false ;
 
   //NODE METHOD
   Hapi = require('hapi');
@@ -26,6 +26,26 @@
   _areas = require('./areas');
   _areasWithIssues = require('./areasWithIssues');
   _serviceReports = require('./serviceReports');
+  _messages = [
+      {
+      "user": {
+        "id": 12,
+        "username": "deepan@afteryou.co"
+      },
+      "id": 50,
+      "content": "Good bye",
+      "creation_date": "01/12/2014 17:01"
+      },
+      {
+      "user": {
+        "id": 11,
+        "username": "sebastian@afteryou.co"
+      },
+      "id": 49,
+      "content": "Hello",
+      "creation_date": "01/12/2014 17:01"
+      }
+  ];
 
   //HANDLER METHODS
   getPath = function (path, handler) {
@@ -156,6 +176,7 @@
     return _serviceReports.getServiceReport(+id);
   };
 
+
   //GET PATHS
   getPath("/agent_app/template/areas/{id?}", function (request, reply) { reply(areas(encodeURIComponent(request.params.id))); });
   getPath("/agent_app/template/areas/issues", function (request, reply) { reply(areaWithIssues()); });
@@ -166,6 +187,7 @@
   getPath("/agent_app/listing", function (request, reply) { reply(listing()); });
   getPath("/agent_app/service_report/{id?}", function (request, reply) { reply(serviceReports(encodeURIComponent(request.params.id))); });
   getPath("/agent_app/streetName/{searchValue}", getStreetName);
+  getPath("/agent_app/messages/ServiceReport/{id}", function (request,reply){ reply(_messages) });
 
   //POST METHODS
   function logRequest(request, request_name) {
@@ -213,7 +235,18 @@
     logRequest(request, "Mail SR");
   };
   postMessageServiceReport = function (request, reply) {
+    var newMessage = {
+    "user": {
+      "id": 11,
+      "username": "sebastian@afteryou.co"
+    },
+    "id": 51,
+    "content": request.payload.content || "HELLO",
+    "creation_date": "01/12/2014 17:01"
+    };
+   _messages.unshift(newMessage);
     logRequest(request, "Messages Service Report");
+    reply(newMessage);
   };
 
   //IMAGE UPLOAD
