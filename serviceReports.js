@@ -165,7 +165,7 @@ var serviceReport289 = {
       "type": "Day Curtain",
       "quantity": 1,
       "dimension": ""
-    },{
+    }, {
       "return_date": "12/12/2014",
       "id": 4,
       "service_report": 290,
@@ -196,7 +196,7 @@ var serviceReport289 = {
       "dimension_x": null,
       "dimension_y": null,
       "dimension_unit": "feet"
-    },{
+    }, {
       "return_date": "01/12/2014",
       "id": 3,
       "service_report": 290,
@@ -357,7 +357,7 @@ var curtain290 = [{
   "type": "Day Curtain",
   "quantity": 1,
   "dimension": ""
-},{
+}, {
   "return_date": "01/12/2014",
   "id": 3,
   "service_report": 290,
