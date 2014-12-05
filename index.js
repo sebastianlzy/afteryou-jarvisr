@@ -248,6 +248,7 @@
     reply(newMessage);
   };
   //IMAGE UPLOAD
+
   server.route({
     method: 'POST',
     path: '/agent_app/request/image',
@@ -259,7 +260,22 @@
       }
     },
     handler: function (request, reply) {
-      request.payload.image.pipe(fs.createWriteStream(request.payload.client_image_id + ".jpg"));
+      var writeImage;
+      writeImage = function (index) {
+        request.payload.image.pipe(fs.createWriteStream("images/" + request.payload.client_image_id + "_" + index + ".jpg",
+          {
+            flags: 'wx',
+            encoding: null
+          }));
+      };
+      function imageExist(index) {
+        if (fs.existsSync("images/" + request.payload.client_image_id + "_" + index + ".jpg")) {
+          imageExist(index + 1);
+        } else {
+          writeImage(index);
+        }
+      }
+      imageExist(0);
       reply("Received");
     }
   });
