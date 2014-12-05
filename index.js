@@ -17,7 +17,6 @@
   prettyjson = require('prettyjson');
   _request = require('request');
   server = Hapi.createServer('0.0.0.0', 3000, { json: { space: 2 }, cors: true, router: { stripTrailingSlash: true } });
-
   //JARVIS OBJECTS
   _listings = require('./listings.js');
   _rooms = require('./rooms.js');
@@ -268,6 +267,7 @@
             encoding: null
           }));
       };
+      //make sure not to override images
       function imageExist(index) {
         if (fs.existsSync("images/" + request.payload.client_image_id + "_" + index + ".jpg")) {
           imageExist(index + 1);
