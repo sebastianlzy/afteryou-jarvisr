@@ -212,7 +212,7 @@
     reply({ id: 4 });
   };
   postRequest = function (request, reply) {
-    //logRequest(request, 'Request');
+    logRequest(request, 'Request');
     reply({ id: 1 });
   };
   putServiceReport = function (request, reply) {
@@ -225,6 +225,7 @@
   };
   postFeedback = function (request, reply) {
     logRequest(request, "Feedback");
+    reply("Feedback received");
   };
   postChangePassword = function (request, reply) {
     logRequest(request, "New Password");
