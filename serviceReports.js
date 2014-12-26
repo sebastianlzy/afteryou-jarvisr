@@ -3,8 +3,8 @@
  *
  */
 
-/*global exports, require, prettyjson */
-var _;
+/*global exports, require, prettyjson, console */
+var _, prettyjson;
 
 _ = require('lodash');
 prettyjson = require('prettyjson');
@@ -267,7 +267,6 @@ var areaServices290 = [
         "quantity": 1,
         "description": "Some description",
         "selected": false,
-        "selected_datetime": null,
         "remarks": "Will be replacing with the same exact color"
       },
       {
@@ -280,7 +279,6 @@ var areaServices290 = [
         "quantity": 1,
         "description": "Buy back from original supplier",
         "selected": false,
-        "selected_datetime": null,
         "remarks": "Color are limited to orange only"
       },
       {
@@ -297,6 +295,7 @@ var areaServices290 = [
         "remarks": "Would not be making any attempt to repair burnt holes"
       }
     ],
+    "selected_datetime": null,
     "id": 1759,
     "service_report": 290,
     "user_changeable": true,
@@ -341,11 +340,11 @@ var areaServices290 = [
         "quantity": 1,
         "description": "Something",
         "selected": false,
-        "selected_datetime": null,
         "remarks": "Would need to purchase a new one"
       }
     ],
     "id": 1766,
+    "selected_datetime": null,
     "service_report": 290,
     "user_changeable": true,
     "user_data_remarks": "",
@@ -460,7 +459,7 @@ var serviceReport290 = {
   "service_start_changeable": true,
   "new_admin_message": false,
   "new_agent_message": false
-}
+};
 
 
 var serviceReport = [serviceReport290, serviceReport289];
