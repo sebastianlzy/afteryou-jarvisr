@@ -41,7 +41,6 @@ var serviceReports = [
     "new_admin_message": false
   }];
 
-
 var areaServices289 = [
   {
     "area": {
@@ -339,14 +338,14 @@ var areaServices290 = [
         "unit": "per piece",
         "quantity": 1,
         "description": "Something",
-        "selected": false,
+        "selected": true,
         "remarks": "Would need to purchase a new one"
       }
     ],
     "id": 1766,
-    "selected_datetime": null,
+    "selected_datetime": "22/12/2014",
     "service_report": 290,
-    "user_changeable": true,
+    "user_changeable": false,
     "user_data_remarks": "",
     "requires_quotation": true,
     "service_provider_selected": false,
@@ -354,19 +353,21 @@ var areaServices290 = [
   }
 ];
 
-var cleaning290 = [{
-  "id": 3,
-  "service_report": 290,
-  "user_changeable": true,
-  "user_data_remarks": "Please clean my house.",
-  "requires_quotation": false,
-  "price": "230.00",
-  "selected": false,
-  "quantity": 1,
-  "selected_datetime": null,
-  "name": "Spring Cleaning",
-  "remarks": "Sending 3 cleaners "
-}];
+var cleaning290 = [
+  {
+    "id": 3,
+    "service_report": 290,
+    "user_changeable": true,
+    "user_data_remarks": "Please clean my house.",
+    "requires_quotation": false,
+    "price": "230.00",
+    "selected": false,
+    "quantity": 1,
+    "selected_datetime": null,
+    "name": "Spring Cleaning",
+    "remarks": "Sending 3 cleaners "
+  }
+];
 
 var curtain290 = [{
   "return_date": "01/12/2014",
@@ -460,7 +461,6 @@ var serviceReport290 = {
   "new_admin_message": false,
   "new_agent_message": false
 };
-
 
 var serviceReport = [serviceReport290, serviceReport289];
 

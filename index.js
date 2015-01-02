@@ -282,6 +282,12 @@
   });
   //POST PATHS
   postPath("/login", postLogin);
+  postPath("/website/agent_app_signup", function (request, reply) {
+    logRequest(request, "DEBUG");
+    setTimeout(function () {
+      reply("good");
+    }, 100);
+  });
   postPath("/agent_app/listing", postListing);
   postPath("/agent_app/request", postRequest);
   postPath("/agent_app/notification_token", postNotificationToken);
@@ -291,7 +297,9 @@
   postPath("/agent_app/messages/ServiceReport/{id}", postMessageServiceReport);
   postPath("/agent_app/debug", function (request, reply) {
     logRequest(request, "DEBUG");
-    reply("good");
+    setTimeout(function () {
+      reply("good");
+    }, 100);
   });
   putPath("/agent_app/service_report/{id}", putServiceReport);
   server.pack.register(Good, function (err) {
