@@ -235,6 +235,7 @@
     logRequest(request, "New Password");
   };
   postSRmail = function (request, reply) {
+    _request.post("http://localhost:3002/agent_app/service_report/send_mail");
     logRequest(request, "Mail SR");
   };
   postMessageServiceReport = function (request, reply) {
