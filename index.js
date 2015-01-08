@@ -160,6 +160,7 @@
     if (isNaN(id)) {
       return _serviceReports.getAll();
     }
+    _serviceReports.setServiceReportLatest(290, false);
     return _serviceReports.getServiceReport(+id);
   };
   //GET PATHS
@@ -209,14 +210,17 @@
   };
   postListing = function (request, reply) {
     logRequest(request, 'Listing');
+    _listings.addListing(request.payload);
     reply({ id: 4 });
   };
   postRequest = function (request, reply) {
     logRequest(request, 'Request');
+    _serviceReports.setServiceReportLatest(290, true);
     reply({ id: 1 });
   };
   putServiceReport = function (request, reply) {
     logRequest(request, 'Service Report');
+    _serviceReports.setUserChangeable(request.payload);
     reply(request.payload);
   };
   postNotificationToken = function (request, reply) {

@@ -13,7 +13,7 @@ var serviceReports = [
   {
     "id": 290,
     "number_of_submission": 0,
-    "latest": true,
+    "latest": false,
     "address": {
       "name": "The Lakefront residence",
       "block_number": "42",
@@ -255,6 +255,7 @@ var areaServices290 = [
       "client_image_id": "1417153038155",
       "image_count": 0
     },
+    "images" : ["http://afteryou.co/media/service_images/339_1420511707573_1.jpg", "http://afteryou.co/media/service_images/339_1420511707573_0.jpg"],
     "solutions": [
       {
         "name": "Replace with Ikea Curtain",
@@ -262,7 +263,7 @@ var areaServices290 = [
         "solution": 52,
         "area_service": 1759,
         "unit_price": "150.00",
-        "unit": "per piece",
+        "unit": "Per Piece",
         "quantity": 1,
         "description": "Some description",
         "selected": false,
@@ -274,7 +275,7 @@ var areaServices290 = [
         "solution": 53,
         "area_service": 1760,
         "unit_price": "270.00",
-        "unit": "per piece",
+        "unit": "Per Piece",
         "quantity": 1,
         "description": "Buy back from original supplier",
         "selected": false,
@@ -286,7 +287,7 @@ var areaServices290 = [
         "solution": 54,
         "area_service": 1761,
         "unit_price": "100.00",
-        "unit": "per piece",
+        "unit": "per Piece",
         "quantity": 1,
         "description": "Wash and dry curtain",
         "selected": false,
@@ -334,18 +335,18 @@ var areaServices290 = [
         "id": 1,
         "solution": 25,
         "area_service": 1766,
-        "unit_price": "200.00",
+        "unit_price": "202.00",
         "unit": "per piece",
         "quantity": 1,
         "description": "Something",
-        "selected": true,
+        "selected": false,
         "remarks": "Would need to purchase a new one"
       }
     ],
     "id": 1766,
-    "selected_datetime": "22/12/2014",
+    "selected_datetime": null,
     "service_report": 290,
-    "user_changeable": false,
+    "user_changeable": true,
     "user_data_remarks": "",
     "requires_quotation": true,
     "service_provider_selected": false,
@@ -420,15 +421,15 @@ var carpet290 = [{
 var serviceReport290 = {
   "listing_id": 518,
   "service_by_date": "01/12/2014",
-  "service_report_generated_date": null,
+  "service_report_generated_date": "01/12/2014",
   "request_generated_date": "28/11/2014",
   "service_manager": null,
   "address": {
-    "name": "",
-    "block_number": "",
-    "street_name": "Bukit batok central",
+    "name": "The Lakefront residence",
+    "block_number": "42",
+    "street_name": "Lakeside drive",
     "unit_number": "12-345",
-    "postal_code": 650106
+    "postal_code": 648315
   },
   "area_services": areaServices290,
   "house_services": [],
@@ -443,8 +444,10 @@ var serviceReport290 = {
     }
   },
   "cleaning": cleaning290,
-  "curtains": curtain290,
-  "carpets": carpet290,
+  // "curtains": curtain290,
+  // "carpets": carpet290,
+  "curtains": [],
+  "carpets": [],
   "id": 290,
   "type": "walkthrough",
   "agent": 1,
@@ -475,3 +478,33 @@ exports.getServiceReport = function (id) {
   console.log(prettyjson.render(service_report));
   return _.find(serviceReport, { id: +id });
 };
+
+exports.setServiceReportLatest = function (id, value) {
+  'use strict';
+  var service_report = _.find(serviceReports, { id: +id });
+  service_report.latest = value;
+  console.log(serviceReports);
+};
+
+exports.setUserChangeable = function (request) {
+  'use strict';
+
+  request.area_services.forEach(function (area_service) {
+    area_service.solutions.forEach(function (solution) {
+      if (solution.selected) {
+        area_service.user_changeable = false;
+        area_service.selected_datetime = Date.now();
+      }
+    });
+  });
+  request.cleaning.forEach(function (clean) {
+    if (clean.selected) {
+      clean.user_changeable = false;
+      clean.selected_datetime = Date.now();
+    }
+  });
+  serviceReport.unshift(request);
+};
+
+
+
