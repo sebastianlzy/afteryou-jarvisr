@@ -237,6 +237,7 @@
   postSRmail = function (request, reply) {
     _request.post("http://localhost:3002/agent_app/service_report/send_mail");
     logRequest(request, "Mail SR");
+    reply('mail sent');
   };
   postMessageServiceReport = function (request, reply) {
     var newMessage = {
