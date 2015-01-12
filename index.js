@@ -215,11 +215,14 @@
   };
   postRequest = function (request, reply) {
     logRequest(request, 'Request');
-    _serviceReports.setServiceReportLatest(290, true);
+    setTimeout(function () {
+      _serviceReports.setServiceReportLatest(290, true);
+    }, 4000);
+
     reply({ id: 1 });
   };
   putServiceReport = function (request, reply) {
-    logRequest(request, 'Service Report');
+    logRequest(request, 'Put Service Report');
     _serviceReports.setUserChangeable(request.payload);
     reply(request.payload);
   };

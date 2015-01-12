@@ -239,7 +239,7 @@ var areaServices290 = [
       "id": 787,
       "template_room": 8,
       "name": "Bathroom 1",
-      "description": "Some description. Buy back from original supplier. I am a description.<br/> Please tell me what to do. <strong>I</strong> know what you did last summer. HAHAHA. DIE!!!!"
+      "description": "Some description. "
     },
     "issue": {
       "template_issue": {
@@ -265,7 +265,7 @@ var areaServices290 = [
         "unit_price": "150.00",
         "unit": "Per Piece",
         "quantity": 1,
-        "description": "Some description.Buy back from original supplier. <br/>I am a description. Please tell me what to do. I know what you did last summer. <em>HAHAHA</em>. DIE!!!!",
+        "description": "",
         "selected": false
       },
       {
@@ -335,9 +335,8 @@ var areaServices290 = [
         "unit_price": "202.00",
         "unit": "per piece",
         "quantity": 1,
-        "description": "Something",
-        "selected": false,
-        "remarks": "Would need to purchase a new one"
+        "description": "Would be purchasing a new one from Ikea",
+        "selected": false
       }
     ],
     "id": 1766,
@@ -363,7 +362,7 @@ var cleaning290 = [
     "quantity": 1,
     "selected_datetime": null,
     "name": "Spring Cleaning",
-    "description": "Sending 3 cleaners "
+    "description": "Sending 3 cleaners for 4 hours  "
   }
 ];
 
@@ -374,10 +373,10 @@ var curtain290 = [{
   "user_changeable": true,
   "user_data_remarks": "There is bird stain. Please remove it for me.",
   "requires_quotation": false,
-  "price": "120.00",
+  "price": "9.00",
   "selected": false,
   "selected_datetime": null,
-  "unit": "per piece",
+  "unit": "per kg",
   "type": "Day Curtain",
   "quantity": 1,
   "dimension": "",
@@ -389,8 +388,8 @@ var curtain290 = [{
   "user_changeable": true,
   "user_data_remarks": "There is bird stain. Please remove it for me.",
   "requires_quotation": false,
-  "price": "120.00",
-  "unit": "per piece",
+  "price": "90.00",
+  "unit": "per KG",
   "selected": false,
   "selected_datetime": null,
   "type": "Night Curtain",
