@@ -239,7 +239,7 @@ var areaServices290 = [
       "id": 787,
       "template_room": 8,
       "name": "Bathroom 1",
-      "description": ""
+      "description": "Some description. Buy back from original supplier. I am a description.<br/> Please tell me what to do. <strong>I</strong> know what you did last summer. HAHAHA. DIE!!!!"
     },
     "issue": {
       "template_issue": {
@@ -258,14 +258,14 @@ var areaServices290 = [
     "images" : ["http://afteryou.co/media/service_images/339_1420511707573_1.jpg", "http://afteryou.co/media/service_images/339_1420511707573_0.jpg"],
     "solutions": [
       {
-        "name": "Replace with Ikea Curtain",
+        "name": "Replace with Ikea Curtains",
         "id": 2,
         "solution": 52,
         "area_service": 1759,
         "unit_price": "150.00",
         "unit": "Per Piece",
         "quantity": 1,
-        "description": "Some description",
+        "description": "Some description.Buy back from original supplier. <br/>I am a description. Please tell me what to do. I know what you did last summer. <em>HAHAHA</em>. DIE!!!!",
         "selected": false
       },
       {
@@ -363,7 +363,7 @@ var cleaning290 = [
     "quantity": 1,
     "selected_datetime": null,
     "name": "Spring Cleaning",
-    "remarks": "Sending 3 cleaners "
+    "description": "Sending 3 cleaners "
   }
 ];
 
@@ -380,7 +380,8 @@ var curtain290 = [{
   "unit": "per piece",
   "type": "Day Curtain",
   "quantity": 1,
-  "dimension": ""
+  "dimension": "",
+  "description": "Removing bird stain using steam wash "
 }, {
   "return_date": "01/12/2014",
   "id": 3,
@@ -394,7 +395,8 @@ var curtain290 = [{
   "selected_datetime": null,
   "type": "Night Curtain",
   "quantity": 2,
-  "dimension": ""
+  "dimension": "",
+  "description": "Removing bird stain using steam wash "
 }];
 
 var carpet290 = [{
@@ -412,7 +414,8 @@ var carpet290 = [{
   "material": "Nylon Carpet",
   "dimension_x": null,
   "dimension_y": null,
-  "dimension_unit": "feet"
+  "dimension_unit": "feet",
+  "description": "Festive season, requires an additional of 2 working days"
 }];
 
 var serviceReport290 = {
@@ -441,10 +444,8 @@ var serviceReport290 = {
     }
   },
   "cleaning": cleaning290,
-  // "curtains": curtain290,
-  // "carpets": carpet290,
-  "curtains": [],
-  "carpets": [],
+  "curtains": curtain290,
+  "carpets": carpet290,
   "id": 290,
   "type": "walkthrough",
   "agent": 1,
