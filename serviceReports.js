@@ -266,8 +266,7 @@ var areaServices290 = [
         "unit": "Per Piece",
         "quantity": 1,
         "description": "Some description",
-        "selected": false,
-        "remarks": "Will be replacing with the same exact color"
+        "selected": false
       },
       {
         "name": "Replace with original curtain",
@@ -278,8 +277,7 @@ var areaServices290 = [
         "unit": "Per Piece",
         "quantity": 1,
         "description": "Buy back from original supplier",
-        "selected": false,
-        "remarks": "Color are limited to orange only"
+        "selected": false
       },
       {
         "name": "Wash and dry curtain",
@@ -291,8 +289,7 @@ var areaServices290 = [
         "quantity": 1,
         "description": "Wash and dry curtain",
         "selected": false,
-        "selected_datetime": null,
-        "remarks": "Would not be making any attempt to repair burnt holes"
+        "selected_datetime": null
       }
     ],
     "selected_datetime": null,
