@@ -5,7 +5,7 @@
   var Hapi, Good, _request, _, prettyjson, server, fs,
     getPath, postPath, putPath,
     rooms, roomWithAreas, areas, areaWithIssues, listing, serviceReports,
-    _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports, _messages,
+    _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports, _messages, _jobs,
     postLogin, postListing, postRequest, putServiceReport, postNotificationToken, postFeedback, postChangePassword, postSRmail, postMessageServiceReport,
     getFromOneMap, getStreetName, token, renewToken = false;
 
@@ -44,6 +44,7 @@
       "creation_date": "01/12/2014 17:01"
     }
   ];
+  _jobs = require('./jobs');
   //HANDLER METHODS
   getPath = function (path, handler) {
     server.route({
@@ -191,6 +192,9 @@
   getPath("/agent_app/streetName/{searchValue}", getStreetName);
   getPath("/agent_app/messages/ServiceReport/{id}", function (request, reply) {
     reply(_messages);
+  });
+  getPath("/agent_app/jobs/{id?}", function (request, reply) {
+    reply(_jobs.getJobs(encodeURIComponent(request.params.id)));
   });
   //POST METHODS
   function logRequest(request, request_name) {
