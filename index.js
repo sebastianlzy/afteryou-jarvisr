@@ -2,7 +2,7 @@
 
 (function () {
   'use strict';
-  var Hapi, Good, _request, _, prettyjson, server, fs,
+  var Hapi, Good, _request, _, prettyjson, server, fs, Boom,
     getPath, postPath, putPath,
     rooms, roomWithAreas, areas, areaWithIssues, listing, serviceReports,
     _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports, _messages, _jobs,
@@ -12,6 +12,7 @@
   //NODE METHOD
   Hapi = require('hapi');
   Good = require('good');
+  Boom = require('boom');
   _ = require('lodash');
   fs = require('fs');
   prettyjson = require('prettyjson');
@@ -189,6 +190,15 @@
   getPath("/agent_app/service_report/{id?}", function (request, reply) {
     reply(serviceReports(encodeURIComponent(request.params.id)));
   });
+  getPath("/agent_app/service_report/order_form/{slug?}", function (request, reply) {
+    var slug = request.params.slug;
+    if (slug) {
+      console.log(request.params.slug);
+      reply(_serviceReports.getServiceReport(290));
+    } else {
+      reply(Boom.badRequest('No slug in params'));
+    }
+  });
   getPath("/agent_app/streetName/{searchValue}", getStreetName);
   getPath("/agent_app/messages/ServiceReport/{id}", function (request, reply) {
     reply(_messages);
@@ -242,9 +252,9 @@
     logRequest(request, "New Password");
   };
   postSRmail = function (request, reply) {
-    _request.post("http://localhost:3002/agent_app/service_report/send_mail");
+    //_request.post("http://localhost:3002/agent_app/service_report/send_mail");
     logRequest(request, "Mail SR");
-    reply('mail sent');
+    reply({slug: "TZO6BU"});
   };
   postMessageServiceReport = function (request, reply) {
     var newMessage = {
@@ -261,7 +271,6 @@
     reply(newMessage);
   };
   //IMAGE UPLOAD
-
   server.route({
     method: 'POST',
     path: '/agent_app/request/image',
@@ -307,12 +316,23 @@
   postPath("/agent_app/feedback", postFeedback);
   postPath("/change_password", postChangePassword);
   postPath("/agent_app/service_report/send_mail", postSRmail);
+  postPath("/agent_app/v2/service_report/order_form", postSRmail);
   postPath("/agent_app/messages/ServiceReport/{id}", postMessageServiceReport);
   postPath("/agent_app/debug", function (request, reply) {
     logRequest(request, "DEBUG");
     setTimeout(function () {
       reply("good");
     }, 100);
+  });
+  putPath("/agent_app/service_report/order_form/{slug?}", function (request, reply) {
+    var slug = request.params.slug;
+    if (slug) {
+      _serviceReports.setUserChangeable(request.payload);
+      logRequest(request, "Order form");
+      reply("received");
+    } else {
+      reply(Boom.badRequest('No slug in params'));
+    }
   });
   putPath("/agent_app/service_report/{id}", putServiceReport);
   server.pack.register(Good, function (err) {

@@ -255,7 +255,7 @@ var areaServices290 = [
       "client_image_id": "1417153038155",
       "image_count": 0
     },
-    "images" : ["http://afteryou.co/media/service_images/339_1420511707573_1.jpg", "http://afteryou.co/media/service_images/339_1420511707573_0.jpg"],
+    "images" : [{image: "http://afteryou.co/media/service_images/339_1420511707573_1.jpg"}, {image: "http://afteryou.co/media/service_images/339_1420511707573_0.jpg"}],
     "solutions": [
       {
         "name": "Replace with Ikea Curtains",
@@ -498,6 +498,18 @@ exports.setUserChangeable = function (request) {
     if (clean.selected) {
       clean.user_changeable = false;
       clean.selected_datetime = Date.now();
+    }
+  });
+  request.curtains.forEach(function (curtain) {
+    if (curtain.selected) {
+      curtain.user_changeable = false;
+      curtain.selected_datetime = Date.now();
+    }
+  });
+  request.carpets.forEach(function (carpet) {
+    if (carpet.selected) {
+      carpet.user_changeable = false;
+      carpet.selected_datetime = Date.now();
     }
   });
   serviceReport.unshift(request);
