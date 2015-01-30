@@ -9,10 +9,11 @@
 
 var results = [
   {
-    "room_count": [{ "position": 1, "type": "Bedroom", "id": 6, "default_number": 2 },
+    "room_count": [
+      { "position": 1, "type": "Bedroom", "id": 6, "default_number": 2 },
       { "position": 2, "type": "Bathroom", "id": 8, "default_number": 2 },
       { "position": 3, "type": "Living Room", "id": 5, "default_number": 1 },
-      { "position": 4, "type": "Kitchen", "id": 7, "default_number": 1 },
+      { "position": 4, "type": "Kitchen", "id": 7, "default_number": 2 },
       { "position": 5, "type": "Store Room", "id": 10, "default_number": 1 },
       { "position": 6, "type": "Balcony/Patio", "id": 9, "default_number": 0 },
       { "position": 7, "type": "Others", "id": 11, "default_number": 0 }],
@@ -27,7 +28,8 @@ var results = [
     "id": 292
   },
   {
-    "room_count": [{ "position": 1, "type": "Bedroom", "id": 6, "default_number": 2 },
+    "room_count": [
+      { "position": 1, "type": "Bedroom", "id": 6, "default_number": 2 },
       { "position": 2, "type": "Bathroom", "id": 8, "default_number": 2 },
       { "position": 3, "type": "Living Room", "id": 5, "default_number": 1 },
       { "position": 4, "type": "Kitchen", "id": 7, "default_number": 1 },

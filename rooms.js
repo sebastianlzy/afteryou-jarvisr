@@ -50,6 +50,12 @@ exports.getAll = function () {
       "type": "Others",
       "default_number": 0,
       "position": 7
+    },
+    {
+      "id": 12,
+      "type": "Miscellaneous Room",
+      "default_number": 0,
+      "position": 8
     }
   ];
 };

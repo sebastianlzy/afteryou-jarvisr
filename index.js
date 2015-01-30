@@ -2,23 +2,25 @@
 
 (function () {
   'use strict';
-  var Hapi, Good, _request, _, prettyjson, server, fs, Boom,
+  var Hapi, Good, _request, _, prettyjson, server, fs, Boom, Path,
     getPath, postPath, putPath,
     rooms, roomWithAreas, areas, areaWithIssues, listing, serviceReports,
-    _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports, _messages, _jobs,
-    postLogin, postListing, postRequest, putServiceReport, postNotificationToken, postFeedback, postChangePassword, postSRmail, postMessageServiceReport,
+    _listings, _rooms, _roomsWithAreas, _areas, _areasWithIssues, _serviceReports, _messages, _jobs, _inventories,
+    postLogin, postListing, postRequest, putServiceReport, postNotificationToken, postFeedback, postChangePassword, postSRmail, postMessageServiceReport, postInventoryListing,
     getFromOneMap, getStreetName, token, renewToken = false;
 
   //NODE METHOD
   Hapi = require('hapi');
   Good = require('good');
   Boom = require('boom');
+  Path = require('path');
   _ = require('lodash');
   fs = require('fs');
   prettyjson = require('prettyjson');
   _request = require('request');
-  server = Hapi.createServer('0.0.0.0', 3000, { json: { space: 2 }, cors: true, router: { stripTrailingSlash: true } });
+  server = Hapi.createServer('0.0.0.0', 3000, { json: { space: 2 }, cors: true, router: { stripTrailingSlash: true }, files: { relativeTo: Path.join(__dirname, 'images')}});
   //JARVIS OBJECTS
+  _inventories = require('./inventories.js');
   _listings = require('./listings.js');
   _rooms = require('./rooms.js');
   _roomsWithAreas = require('./roomWithAreas');
@@ -206,6 +208,23 @@
   getPath("/agent_app/jobs/{id?}", function (request, reply) {
     reply(_jobs.getJobs(encodeURIComponent(request.params.id)));
   });
+  getPath("/agent_app/inventories/{id?}", function (request, reply) {
+    var id = request.params.id;
+    if (id) {
+      reply(_inventories.getInventory());
+    } else {
+      reply(_inventories.getAll());
+    }
+  });
+  server.route({
+    method: 'GET',
+    path: '/agent_app/images/{filename}',
+    handler: {
+      file: function (request) {
+        return request.params.filename;
+      }
+    }
+  });
   //POST METHODS
   function logRequest(request, request_name) {
     request_name = request_name || "DEBUG";
@@ -243,6 +262,12 @@
   postNotificationToken = function (request, reply) {
     reply(request.payload);
     logRequest(request, 'Token');
+  };
+  postInventoryListing = function (request, reply) {
+    _inventories.setInventory(request.payload);
+    reply(request.payload);
+
+    logRequest(request, 'Inventory Listing');
   };
   postFeedback = function (request, reply) {
     logRequest(request, "Feedback");
@@ -302,6 +327,37 @@
       reply("Received");
     }
   });
+  server.route({
+    method: 'POST',
+    path: '/agent_app/inventories/image',
+    config: {
+      payload: {
+        maxBytes: 209715200,
+        output: 'stream',
+        parse: true
+      }
+    },
+    handler: function (request, reply) {
+      var writeImage;
+      writeImage = function (index) {
+        request.payload.image.pipe(fs.createWriteStream("images/" + request.payload.client_image_id + ".jpg",
+          {
+            flags: 'wx',
+            encoding: null
+          }));
+      };
+      //make sure not to override images
+      function imageExist(index) {
+        if (fs.existsSync("images/" + request.payload.client_image_id + "_" + index + ".jpg")) {
+          imageExist(index + 1);
+        } else {
+          writeImage(index);
+        }
+      }
+      imageExist(0);
+      reply("Received");
+    }
+  });
   //POST PATHS
   postPath("/login", postLogin);
   postPath("/website/agent_app_signup", function (request, reply) {
@@ -318,6 +374,7 @@
   postPath("/agent_app/service_report/send_mail", postSRmail);
   postPath("/agent_app/v2/service_report/order_form", postSRmail);
   postPath("/agent_app/messages/ServiceReport/{id}", postMessageServiceReport);
+  postPath("/agent_app/inventory_listing", postInventoryListing);
   postPath("/agent_app/debug", function (request, reply) {
     logRequest(request, "DEBUG");
     setTimeout(function () {

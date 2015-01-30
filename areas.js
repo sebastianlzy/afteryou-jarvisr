@@ -151,11 +151,19 @@ exports.getAll = function () {
     },
     {
       "id": 39,
-      "name": "Others"
+      "name": "Remote controllers"
     },
     {
-      "id": 38,
-      "name": "Cabinet/Shelf"
+      "id": 40,
+      "name": "Keys"
+    },
+    {
+      "id": 41,
+      "name": "Manual"
+    },
+    {
+      "id": 42,
+      "name": "Others"
     }
   ];
 }

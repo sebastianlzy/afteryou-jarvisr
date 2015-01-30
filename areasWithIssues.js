@@ -2161,6 +2161,168 @@ exports.getAll = function () {
       ],
       "id": 38,
       "name": "Cabinet/Shelf"
+    },
+    {
+      "issues": [
+        {
+          "id": 184,
+          "template_area": 38,
+          "name": "Okay",
+          "status": "ok",
+          "quotation_required": false,
+          "additional_instructions": ""
+        },
+        {
+          "id": 185,
+          "template_area": 38,
+          "name": "Unknown",
+          "status": "unknown",
+          "quotation_required": false,
+          "additional_instructions": ""
+        },
+        {
+          "id": 186,
+          "template_area": 38,
+          "name": "Damaged",
+          "status": "damaged",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/>"
+        },
+        {
+          "id": 188,
+          "template_area": 38,
+          "name": "Disposal",
+          "status": "disposal",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/> 2. Location <br/> 3. Dimensions <br/>"
+        },
+        {
+          "id": 187,
+          "template_area": 38,
+          "name": "Dirty",
+          "status": "dirty",
+          "quotation_required": true,
+          "additional_instructions": ""
+        },
+        {
+          "id": 242,
+          "template_area": 38,
+          "name": "Other Issues",
+          "status": "damaged",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/>"
+        }
+      ],
+      "id": 39,
+      "name": "Remote Controllers"
+    },
+    {
+      "issues": [
+        {
+          "id": 184,
+          "template_area": 38,
+          "name": "Okay",
+          "status": "ok",
+          "quotation_required": false,
+          "additional_instructions": ""
+        },
+        {
+          "id": 185,
+          "template_area": 38,
+          "name": "Unknown",
+          "status": "unknown",
+          "quotation_required": false,
+          "additional_instructions": ""
+        },
+        {
+          "id": 186,
+          "template_area": 38,
+          "name": "Damaged",
+          "status": "damaged",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/>"
+        },
+        {
+          "id": 188,
+          "template_area": 38,
+          "name": "Disposal",
+          "status": "disposal",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/> 2. Location <br/> 3. Dimensions <br/>"
+        },
+        {
+          "id": 187,
+          "template_area": 38,
+          "name": "Dirty",
+          "status": "dirty",
+          "quotation_required": true,
+          "additional_instructions": ""
+        },
+        {
+          "id": 242,
+          "template_area": 38,
+          "name": "Other Issues",
+          "status": "damaged",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/>"
+        }
+      ],
+      "id": 40,
+      "name": "Keys"
+    },
+    {
+      "issues": [
+        {
+          "id": 184,
+          "template_area": 38,
+          "name": "Okay",
+          "status": "ok",
+          "quotation_required": false,
+          "additional_instructions": ""
+        },
+        {
+          "id": 185,
+          "template_area": 38,
+          "name": "Unknown",
+          "status": "unknown",
+          "quotation_required": false,
+          "additional_instructions": ""
+        },
+        {
+          "id": 186,
+          "template_area": 38,
+          "name": "Damaged",
+          "status": "damaged",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/>"
+        },
+        {
+          "id": 188,
+          "template_area": 38,
+          "name": "Disposal",
+          "status": "disposal",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/> 2. Location <br/> 3. Dimensions <br/>"
+        },
+        {
+          "id": 187,
+          "template_area": 38,
+          "name": "Dirty",
+          "status": "dirty",
+          "quotation_required": true,
+          "additional_instructions": ""
+        },
+        {
+          "id": 242,
+          "template_area": 38,
+          "name": "Other Issues",
+          "status": "damaged",
+          "quotation_required": true,
+          "additional_instructions": "1. Take Photo <br/>"
+        }
+      ],
+      "id": 41,
+      "name": "Manuals"
     }
     ];
 };
