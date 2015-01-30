@@ -53,7 +53,7 @@ exports.getAll = function () {
     },
     {
       "id": 12,
-      "type": "Miscellaneous Room",
+      "type": "Miscellaneous",
       "default_number": 0,
       "position": 8
     }

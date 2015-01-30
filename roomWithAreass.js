@@ -277,7 +277,7 @@ exports.getAll = function () {
           "name": "Manual"
         }],
       "id": 12,
-      "type": "Miscellaneous Room",
+      "type": "Miscellaneous",
       "default_number": 1,
       "position": 7
     },
