@@ -8,7 +8,6 @@ var _, prettyjson;
 
 _ = require('lodash');
 prettyjson = require('prettyjson');
-
 var serviceReports = [
   {
     "id": 290,

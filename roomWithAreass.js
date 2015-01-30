@@ -7,7 +7,6 @@
 exports.getAll = function () {
   'use strict';
   return [
-
     {
       "template_areas": [
         {

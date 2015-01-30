@@ -23,7 +23,7 @@
   _inventories = require('./inventories.js');
   _listings = require('./listings.js');
   _rooms = require('./rooms.js');
-  _roomsWithAreas = require('./roomWithAreas');
+  _roomsWithAreas = require('./roomWithAreass');
   _areas = require('./areas');
   _areasWithIssues = require('./areasWithIssues');
   _serviceReports = require('./serviceReports');
