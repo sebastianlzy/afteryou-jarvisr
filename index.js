@@ -19,6 +19,12 @@
   prettyjson = require('prettyjson');
   _request = require('request');
   server = Hapi.createServer('0.0.0.0', 3000, { json: { space: 2 }, cors: true, router: { stripTrailingSlash: true }, files: { relativeTo: Path.join(__dirname, 'images')}});
+  server.state('session', {
+    ttl: 24 * 60 * 60 * 1000,     // One day
+    isSecure: true,
+    path: '/',
+    encoding: 'base64json'
+  });
   //JARVIS OBJECTS
   _inventories = require('./inventories.js');
   _listings = require('./listings.js');
@@ -190,7 +196,7 @@
     reply(listing());
   });
   getPath("/agent_app/service_report/{id?}", function (request, reply) {
-    reply(serviceReports(encodeURIComponent(request.params.id)));
+    reply(serviceReports(encodeURIComponent(request.params.id)))
   });
   getPath("/agent_app/service_report/order_form/{slug?}", function (request, reply) {
     var slug = request.params.slug;
@@ -215,6 +221,35 @@
     } else {
       reply(_inventories.getAll());
     }
+  });
+  getPath("/agent_app/news", function (request, reply) {
+    var news = [
+      {
+        "id": 16,
+        "title": "New order form",
+        "message": "Order Form for 172, Bukit Batok West Ave 8, #15-160, S(650172) is ready",
+        "type": "agent_new_orderform",
+        "url": "",
+        "created": "2015-02-03T09:26:21.621709Z"
+      },
+      {
+        "id": 15,
+        "title": "CNY offer",
+        "message": "50% discount on all spring cleaning services. Offer end on 21 Feb 2015 ",
+        "type": "agent_app_offer",
+        "url": "http://afteryou.co/#/",
+        "created": "2015-02-03T09:26:19.320214Z"
+      },
+      {
+        "id": 15,
+        "title": "Job updates",
+        "message": "1 job in 668C, Jurong West Central 2, #15-29, S(6444444) has been scheduled ",
+        "type": "agent_app_job",
+        "url": "http://afteryou.co/#/",
+        "created": "2015-02-03T09:26:19.320214Z"
+      }
+    ];
+    reply(news);
   });
   server.route({
     method: 'GET',
@@ -264,6 +299,7 @@
     logRequest(request, 'Token');
   };
   postInventoryListing = function (request, reply) {
+    console.log(JSON.stringify(request.payload));
     _inventories.setInventory(request.payload);
     reply(request.payload);
 
