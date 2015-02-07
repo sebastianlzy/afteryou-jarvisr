@@ -471,7 +471,6 @@ exports.getAll = function () {
 exports.getServiceReport = function (id) {
   'use strict';
   var service_report = _.find(serviceReport, { id: +id });
-  console.log(prettyjson.render(service_report));
   return _.find(serviceReport, { id: +id });
 };
 
@@ -479,7 +478,6 @@ exports.setServiceReportLatest = function (id, value) {
   'use strict';
   var service_report = _.find(serviceReports, { id: +id });
   service_report.latest = value;
-  console.log(serviceReports);
 };
 
 exports.setUserChangeable = function (request) {

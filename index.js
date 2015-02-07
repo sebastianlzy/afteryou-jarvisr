@@ -201,7 +201,6 @@
   getPath("/agent_app/service_report/order_form/{slug?}", function (request, reply) {
     var slug = request.params.slug;
     if (slug) {
-      console.log(request.params.slug);
       reply(_serviceReports.getServiceReport(290));
     } else {
       reply(Boom.badRequest('No slug in params'));
@@ -231,23 +230,23 @@
         "type": "agent_new_orderform",
         "url": "",
         "created": "2015-02-03T09:26:21.621709Z"
-      },
-      {
-        "id": 15,
-        "title": "CNY offer",
-        "message": "50% discount on all spring cleaning services. Offer end on 21 Feb 2015 ",
-        "type": "agent_app_offer",
-        "url": "http://afteryou.co/#/",
-        "created": "2015-02-03T09:26:19.320214Z"
-      },
-      {
-        "id": 15,
-        "title": "Job updates",
-        "message": "1 job in 668C, Jurong West Central 2, #15-29, S(6444444) has been scheduled ",
-        "type": "agent_app_job",
-        "url": "http://afteryou.co/#/",
-        "created": "2015-02-03T09:26:19.320214Z"
       }
+      //{
+      //  "id": 15,
+      //  "title": "CNY offer",
+      //  "message": "50% discount on all spring cleaning services. Offer end on 21 Feb 2015 ",
+      //  "type": "agent_app_offer",
+      //  "url": "http://afteryou.co/#/",
+      //  "created": "2015-02-03T09:26:19.320214Z"
+      //},
+      //{
+      //  "id": 15,
+      //  "title": "Job updates",
+      //  "message": "1 job in 668C, Jurong West Central 2, #15-29, S(6444444) has been scheduled ",
+      //  "type": "agent_app_job",
+      //  "url": "http://afteryou.co/#/",
+      //  "created": "2015-02-03T09:26:19.320214Z"
+      //}
     ];
     reply(news);
   });
@@ -282,6 +281,7 @@
     reply({ id: 4 });
   };
   postRequest = function (request, reply) {
+    console.log(JSON.stringify(request.payload));
     logRequest(request, 'Request');
     setTimeout(function () {
       _serviceReports.setServiceReportLatest(290, true);
@@ -299,8 +299,9 @@
     logRequest(request, 'Token');
   };
   postInventoryListing = function (request, reply) {
-    console.log(JSON.stringify(request.payload));
+
     _inventories.setInventory(request.payload);
+    request.payload.id = 101;
     reply(request.payload);
 
     logRequest(request, 'Inventory Listing');
@@ -375,22 +376,22 @@
     },
     handler: function (request, reply) {
       var writeImage;
-      writeImage = function (index) {
-        request.payload.image.pipe(fs.createWriteStream("images/" + request.payload.client_image_id + ".jpg",
+      writeImage = function (flag) {
+        request.payload.image.pipe(fs.createWriteStream("images/" + request.payload.image.hapi.filename,
           {
-            flags: 'wx',
+            flags: flag,
             encoding: null
           }));
       };
       //make sure not to override images
-      function imageExist(index) {
-        if (fs.existsSync("images/" + request.payload.client_image_id + "_" + index + ".jpg")) {
-          imageExist(index + 1);
+      function imageExist() {
+        if (fs.existsSync("images/" + request.payload.image.hapi.filename)) {
+          imageExist("r+");
         } else {
-          writeImage(index);
+          writeImage("w");
         }
       }
-      imageExist(0);
+      imageExist();
       reply("Received");
     }
   });
