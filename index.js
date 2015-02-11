@@ -221,7 +221,7 @@
       reply(_inventories.getAll());
     }
   });
-  getPath("/agent_app/news", function (request, reply) {
+  getPath("/agent_app/events", function (request, reply) {
     var news = [
       {
         "id": 16,
