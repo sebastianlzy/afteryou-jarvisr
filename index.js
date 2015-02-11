@@ -366,7 +366,7 @@
   });
   server.route({
     method: 'POST',
-    path: '/agent_app/inventories/image',
+    path: '/agent_app/inventory_listing/image',
     config: {
       payload: {
         maxBytes: 209715200,

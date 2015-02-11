@@ -50,12 +50,12 @@ exports.getAll = function () {
       "type": "Others",
       "default_number": 0,
       "position": 7
-    },
-    {
-      "id": 12,
-      "type": "Miscellaneous",
-      "default_number": 0,
-      "position": 8
     }
+    //{
+    //  "id": 12,
+    //  "type": "Miscellaneous",
+    //  "default_number": 0,
+    //  "position": 8
+    //}
   ];
 };

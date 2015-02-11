@@ -263,37 +263,26 @@ exports.getAll = function () {
       "default_number": 0,
       "position": 6
     },
+    //{
+    //  "template_areas": [
+    //    {
+    //      "id": 39,
+    //      "name": "Remote Controllers"
+    //    },
+    //    {
+    //      "id": 40,
+    //      "name": "Keys"
+    //    }, {
+    //      "id": 41,
+    //      "name": "Manual"
+    //    }],
+    //  "id": 12,
+    //  "type": "Miscellaneous",
+    //  "default_number": 1,
+    //  "position": 7
+    //},
     {
-      "template_areas": [
-        {
-          "id": 39,
-          "name": "Remote Controllers"
-        },
-        {
-          "id": 40,
-          "name": "Keys"
-        }, {
-          "id": 41,
-          "name": "Manual"
-        }],
-      "id": 12,
-      "type": "Miscellaneous",
-      "default_number": 1,
-      "position": 7
-    },
-    {
-      "template_areas": [
-        {
-          "id": 39,
-          "name": "Remote Controllers"
-        },
-        {
-          "id": 40,
-          "name": "Keys"
-        }, {
-          "id": 41,
-          "name": "Manual"
-        }],
+      "template_areas": [],
       "id": 11,
       "type": "Others",
       "default_number": 0,

@@ -151,7 +151,7 @@ exports.getAll = function () {
     },
     {
       "id": 39,
-      "name": "Remote controllers"
+      "name": "Remote Controllers"
     },
     {
       "id": 40,
